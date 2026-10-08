@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "homeTitle": "Caravento Pizza & Restaurant | Hagenberg",
+    "homeDescription": "Enjoy Austrian-Italian specialties at Caravento Pizza & Restaurant in Hagenberg.",
+    "legalTitle": "{{page}} | Caravento Pizza & Restaurant"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "discover": "Discover",
+    "services": "Services",
+    "menu": "Menu",
+    "contact": "Contact",
+    "orderCta": "Order Now!",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language"
+  },
+  "mobileBar": {
+    "call": "Call",
+    "reserve": "Reserve",
+    "order": "Order"
+  },
+  "footer": {
+    "tagline": "Austrian-Italian specialties in Hagenberg",
+    "phone": "Tel.",
+    "address": "Kirchenplatz 6, AT-4232 Hagenberg",
+    "legal": "Legal",
+    "impressum": "Imprint",
+    "agb": "Terms",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "appDownload": "Download the app & enjoy",
+    "appStore": "Download on the App Store",
+    "googlePlay": "Get it on Google Play",
+    "instagram": "Instagram",
+    "rights": "© Caravento Pizza & Restaurant. All rights reserved."
+  },
+  "sections": {
+    "hero": "Welcome",
+    "about": "About Us",
+    "discover": "Discover",
+    "services": "Services",
+    "menu": "Menu",
+    "contact": "Contact",
+    "comingPhase": "Content arrives in a later phase.",
+    "placeholderNote": "Placeholder section"
+  },
+  "hero": {
+    "ctaOrder": "Order Now",
+    "ctaReserve": "Reserve a table",
+    "slide1Title": "Welcome to Caravento Pizza & Restaurant!",
+    "slide1Subtitle": "Enjoy Austrian-Italian specialties!",
+    "slide2Title": "No stress, no waiting – simply order online and enjoy!",
+    "slide2Subtitle": "Take-Away Service",
+    "slide2Note": "Package service: Friday, Saturday & Sunday from 11:00 – 21:00",
+    "slide3Title": "Experience delightful moments at Caravento Pizza & Restaurant",
+    "slide3Subtitle": "Fancy a break?",
+    "slide3Note": "with lovingly prepared dishes!",
+    "orbit": {
+      "tagline": "Dishes carousel",
+      "hint": "Drag, scroll, or tap — dishes spin to the front.",
+      "hintShort": "Drag or tap",
+      "scroll": "Scroll to discover",
+      "prev": "Previous dish",
+      "next": "Next dish",
+      "pizza": "Freshly topped pizza",
+      "pasta": "Homemade pasta",
+      "ribs": "Juicy ribs",
+      "salad": "Fresh salads",
+      "shrimp": "Seafood & pasta",
+      "moments": "Moments to enjoy"
+    }
+  },
+  "about": {
+    "eyebrow": "Welcome to",
+    "title": "A place to enjoy – moments to linger. A warm welcome!",
+    "p1": "Whether for a quick bite, a fragrant coffee or a cozy get-together with friends – you are in the right place with us.",
+    "p2": "Enjoy fresh snacks, homemade delicacies and lovingly prepared drinks in a relaxed atmosphere.",
+    "p3": "Visit us and discover how simple enjoyment can be – uncomplicated, warm and always delicious.",
+    "collageLabel": "Impressions from Caravento"
+  },
+  "discover": {
+    "title": "How about a little break?",
+    "body": "In our bistro you will find fresh dishes prepared with love. Leave the stress of the day behind – whether for a short pause or a cozy evening with family and friends, you are in the right place. Enjoy our tasty food in a relaxed and warm atmosphere. We look forward to welcoming you soon in our bistro!",
+    "caption": "Caravento Pizza & Restaurant – We warmly welcome you – enjoy good food and relaxed moments with us."
+  },
+  "gallery": {
+    "lightbox": "Image gallery",
+    "open": "Open image",
+    "close": "Close gallery",
+    "prev": "Previous image",
+    "next": "Next image"
+  },
+  "services": {
+    "eyebrow": "Our Services",
+    "intro": "Pickup, delivery, reservation, eat-in or table service. We are ready to serve you in all these ways."
+  },
+  "menu": {
+    "eyebrow": "New on the menu",
+    "title": "Culinary variety at Caravento – Hagenberg",
+    "intro": "Look forward to daily changing lunch dishes – a delicious mix of Austrian home cooking and Italian classics. Ideal for anyone who wants to eat well during their break!",
+    "categories": {
+      "mittag": "Lunch",
+      "pizza": "Pizza",
+      "pasta": "Pasta",
+      "salate": "Salads",
+      "burger": "Burgers",
+      "fleisch": "Meat",
+      "eis": "Ice cream",
+      "getraenke": "Drinks"
+    },
+    "vegetarian": "Vegetarian",
+    "placeholderBadge": "Placeholder",
+    "allergens": "Allergens",
+    "allergenSlot": "Allergen icons TBD",
+    "emptyCategory": "No dishes in this category yet."
+  },
+  "contact": {
+    "eyebrow": "Where are we?",
+    "title": "How can we help you?",
+    "intro": "We are happy to answer your questions, meet your needs or support you with any concerns. Do not hesitate to contact us so we can help.",
+    "reservation": "Reservation",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Opening hours",
+    "warmKitchen": "Hot kitchen",
+    "closed": "Closed",
+    "openNow": "Open now",
+    "closedNow": "Closed",
+    "mapConsent": "The OpenStreetMap map loads only after your consent (third-party content).",
+    "loadMap": "Load map",
+    "mapTitle": "Caravento location on OpenStreetMap",
+    "openInOsm": "Open larger map on OpenStreetMap"
+  },
+  "forms": {
+    "contactTitle": "Send a message",
+    "reservationTitle": "Reserve a table",
+    "reservationHelp": "Opening hours: Tuesday–Sunday 11:00–22:00, Monday closed.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneOptional": "Phone (optional)",
+    "message": "Message",
+    "date": "Date",
+    "time": "Time",
+    "guests": "Guests",
+    "notes": "Notes (optional)",
+    "sendMessage": "Send message",
+    "sendReservation": "Request reservation",
+    "sending": "Sending…",
+    "demoHint": "Payload was logged to the console.",
+    "errors": {
+      "required": "Please fill this in",
+      "email": "Please enter a valid email",
+      "phone": "Please enter a phone number",
+      "minMessage": "Message too short (min. 10 characters)",
+      "guests": "Between 1 and 20 guests",
+      "closedDay": "Closed on this day",
+      "outsideHours": "Please choose a time within opening hours (11:00–22:00)",
+      "pastDate": "Please choose a date from today onward"
+    }
+  },
+  "cookies": {
+    "title": "Cookie settings",
+    "body": "We use necessary cookies to run this demo site. Optional categories only with your consent. Details:",
+    "necessary": "Necessary",
+    "necessaryHelp": "Required for basic features (e.g. language, consent storage).",
+    "analytics": "Analytics",
+    "analyticsHelp": "Helps us understand usage. This demo does not load analytics scripts.",
+    "marketing": "Marketing",
+    "marketingHelp": "For marketing embeds. This demo does not load marketing scripts.",
+    "acceptAll": "Accept all",
+    "rejectOptional": "Necessary only",
+    "customize": "Customize",
+    "save": "Save selection",
+    "manage": "Open cookie settings"
+  },
+  "days": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
+  },
+  "legal": {
+    "placeholder": "TODO: Legal text from client",
+    "impressum": "Imprint",
+    "agb": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "backHome": "Back to home",
+    "cookieSettingsNote": "You can reopen your cookie choices at any time."
+  },
+  "common": {
+    "loading": "Loading…",
+    "brand": "Caravento Pizza & Restaurant",
+    "skipToContent": "Skip to content",
+    "backToTop": "Back to top"
+  },
+  "announcements": {
+    "eyebrow": "News",
+    "close": "Close",
+    "prev": "Previous announcement",
+    "next": "Next announcement",
+    "gotIt": "Got it"
+  }
+}
