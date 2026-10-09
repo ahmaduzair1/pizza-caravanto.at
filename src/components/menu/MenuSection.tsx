@@ -70,7 +70,7 @@ export function MenuSection() {
         <LayoutGroup>
           <div
             data-reveal
-            className="mt-8 flex flex-wrap justify-center gap-2"
+            className="section-gap flex flex-wrap justify-center gap-2"
             role="tablist"
             aria-label={t('sections.menu')}
           >
@@ -105,7 +105,7 @@ export function MenuSection() {
           </div>
         </LayoutGroup>
 
-        <div className="mt-8 min-h-[12rem]">
+        <div className="section-gap min-h-[12rem]">
           <AnimatePresence mode="popLayout">
             <motion.div
               key={active}

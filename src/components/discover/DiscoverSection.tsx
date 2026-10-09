@@ -29,7 +29,7 @@ export function DiscoverSection() {
       className="scroll-mt-24 bg-linen"
       aria-labelledby="entdecken-heading"
     >
-      <div className="section-shell pb-8">
+      <div className="section-shell-top">
         <div ref={introRef} className="container-page max-w-3xl">
           <p
             data-reveal
@@ -50,10 +50,12 @@ export function DiscoverSection() {
         </div>
       </div>
 
-      <HorizontalGallery images={images} onOpen={setLightboxIndex} />
+      <div className="section-gap">
+        <HorizontalGallery images={images} onOpen={setLightboxIndex} />
+      </div>
 
-      <div className="container-page pb-12 pt-6 sm:pb-16">
-        <p className="mx-auto max-w-3xl text-center font-display text-sm italic text-ink/75 sm:text-base">
+      <div className="section-shell-bottom section-gap">
+        <p className="container-page mx-auto max-w-3xl text-center font-display text-sm italic text-ink/75 sm:text-base">
           {t('discover.caption')}
         </p>
       </div>

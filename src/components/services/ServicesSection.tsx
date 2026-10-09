@@ -49,7 +49,7 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5">
+        <div className="section-gap grid gap-4 sm:grid-cols-2 sm:gap-5">
           {items.map((item) => (
             <TiltCard key={item.id} className="h-full">
               <article
