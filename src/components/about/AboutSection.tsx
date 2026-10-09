@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { fetchAboutGallery } from '../../api/gallery'
+import { FoodMotifs } from '../discover/FoodMotifs'
 import { useReveal } from '../../hooks/useReveal'
 import type { GalleryImage } from '../../types'
 import { localize } from '../../utils/localize'
@@ -25,10 +26,19 @@ export function AboutSection() {
     <section
       id="ueber-uns"
       ref={sectionRef}
-      className="section-shell scroll-mt-24 bg-background"
+      className="section-shell relative scroll-mt-24 overflow-hidden bg-background"
       aria-labelledby="ueber-uns-heading"
     >
-      <div className="container-page grid items-start gap-10 lg:grid-cols-12">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[22rem] opacity-70"
+        aria-hidden
+        style={{
+          background:
+            'radial-gradient(ellipse 60% 50% at 78% 30%, color-mix(in oklch, var(--secondary) 40%, transparent), transparent 72%)',
+        }}
+      />
+
+      <div className="container-page relative grid items-start gap-10 lg:grid-cols-12">
         <div className="space-y-4 lg:col-span-6 xl:col-span-7">
           <p
             data-reveal
@@ -56,10 +66,12 @@ export function AboutSection() {
 
         <div
           data-reveal
-          className="mx-auto w-full max-w-sm lg:col-span-6 lg:mx-0 lg:max-w-none xl:col-span-5"
+          className="relative mx-auto w-full max-w-sm px-3 lg:col-span-6 lg:mx-0 lg:max-w-none lg:px-4 xl:col-span-5"
           aria-label={t('about.collageLabel')}
         >
-          <div className="form-card grid grid-cols-2 gap-2 p-2.5 sm:gap-2.5 sm:p-3">
+          <FoodMotifs variant="collage" />
+
+          <div className="form-card relative z-[1] grid grid-cols-2 gap-2 p-2.5 sm:gap-2.5 sm:p-3">
             {images.map((image, i) => (
               <div
                 key={image.id}

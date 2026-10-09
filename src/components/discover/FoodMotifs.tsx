@@ -128,7 +128,15 @@ function WineIcon({ className }: { className?: string }) {
   )
 }
 
-const MOTIFS = [
+type Motif = {
+  id: string
+  Icon: (props: { className?: string }) => JSX.Element
+  className: string
+  size: string
+  delay: number
+}
+
+const CARD_MOTIFS: Motif[] = [
   {
     id: 'pizza',
     Icon: PizzaIcon,
@@ -164,14 +172,58 @@ const MOTIFS = [
     size: 'h-10 w-10 sm:h-12 sm:w-12',
     delay: 0.2,
   },
-] as const
+]
 
-export function FoodMotifs() {
+/** Positions tuned for the About photo collage card */
+const COLLAGE_MOTIFS: Motif[] = [
+  {
+    id: 'pizza',
+    Icon: PizzaIcon,
+    className: 'left-[-0.75rem] top-[-0.5rem] text-forest sm:left-[-1.5rem] sm:top-[-0.75rem]',
+    size: 'h-12 w-12 sm:h-14 sm:w-14',
+    delay: 0.15,
+  },
+  {
+    id: 'pasta',
+    Icon: PastaIcon,
+    className: 'right-[-0.5rem] top-[12%] text-brass sm:right-[-1.25rem]',
+    size: 'h-11 w-11 sm:h-12 sm:w-12',
+    delay: 0.55,
+  },
+  {
+    id: 'leaf',
+    Icon: LeafIcon,
+    className: 'bottom-[18%] left-[-0.85rem] text-forest sm:left-[-1.6rem]',
+    size: 'h-11 w-11 sm:h-12 sm:w-12',
+    delay: 0.9,
+  },
+  {
+    id: 'coffee',
+    Icon: CoffeeIcon,
+    className: 'bottom-[-0.35rem] right-[8%] text-terracotta sm:bottom-[-0.6rem]',
+    size: 'h-10 w-10 sm:h-12 sm:w-12',
+    delay: 0.35,
+  },
+  {
+    id: 'wine',
+    Icon: WineIcon,
+    className: 'right-[-0.35rem] bottom-[28%] text-brass sm:right-[-1rem]',
+    size: 'h-10 w-10 sm:h-11 sm:w-11',
+    delay: 1.05,
+  },
+]
+
+interface FoodMotifsProps {
+  variant?: 'card' | 'collage'
+}
+
+export function FoodMotifs({ variant = 'card' }: FoodMotifsProps) {
   const reduced = usePrefersReducedMotion()
+  const motifs = variant === 'collage' ? COLLAGE_MOTIFS : CARD_MOTIFS
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-visible" aria-hidden>
-      {MOTIFS.map(({ id, Icon, className, size, delay }) => (
+      {motifs.map(({ id, Icon, className, size, delay }) => (
         <motion.div
           key={id}
           className={`absolute opacity-[0.55] sm:opacity-70 ${className}`}
