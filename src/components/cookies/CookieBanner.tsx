@@ -42,72 +42,73 @@ export function CookieBanner({ ready: pageReady = true }: CookieBannerProps) {
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-x-0 bottom-0 z-[68] p-3 pb-[4.5rem] md:p-5 md:pb-5"
-          initial={{ opacity: 0, y: 24 }}
+          className="fixed bottom-[4.75rem] left-3 right-3 z-[68] md:bottom-5 md:left-5 md:right-auto md:w-[min(22rem,calc(100vw-2.5rem))]"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 24 }}
+          exit={{ opacity: 0, y: 16 }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           role="dialog"
           aria-labelledby="cookie-banner-title"
           aria-live="polite"
         >
-          <div className="mx-auto max-w-3xl rounded-2xl border border-ink/10 bg-ivory p-4 shadow-soft sm:p-6">
+          <div className="rounded-xl border border-ink/10 bg-ivory p-3.5 shadow-soft sm:p-4">
             <h2
               id="cookie-banner-title"
-              className="font-display text-xl text-ink"
+              className="font-display text-base leading-snug text-ink sm:text-lg"
             >
               {t('cookies.title')}
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-ink/75">
+            <p className="mt-1.5 text-xs leading-relaxed text-ink/70 sm:text-[13px]">
               {t('cookies.body')}{' '}
               <Link
                 to="/cookie-richtlinie"
-                className="font-semibold text-terracotta underline-offset-2 hover:underline"
+                className="font-semibold text-forest underline-offset-2 hover:underline"
               >
                 {t('footer.cookies')}
               </Link>
             </p>
 
             {showDetails ? (
-              <div className="mt-4 space-y-3 rounded-2xl border border-ink/10 bg-linen p-4">
-                <label className="flex items-start gap-3 text-sm">
-                  <input type="checkbox" checked disabled className="mt-1" />
+              <div className="mt-3 space-y-2.5 rounded-xl border border-ink/10 bg-linen p-3">
+                <label className="flex items-start gap-2.5 text-xs sm:text-[13px]">
+                  <input type="checkbox" checked disabled className="mt-0.5" />
                   <span>
                     <span className="font-semibold text-ink">
                       {t('cookies.necessary')}
                     </span>
-                    <span className="mt-0.5 block text-ink/65">
+                    <span className="mt-0.5 block text-ink/60">
                       {t('cookies.necessaryHelp')}
                     </span>
                   </span>
                 </label>
-                <label className="flex items-start gap-3 text-sm">
+                <label className="flex items-start gap-2.5 text-xs sm:text-[13px]">
                   <input
                     type="checkbox"
                     checked={analytics}
                     onChange={(e) => setAnalytics(e.target.checked)}
-                    className="mt-1"
+                    className="mt-0.5"
                   />
                   <span>
                     <span className="font-semibold text-ink">
                       {t('cookies.analytics')}
                     </span>
-                    <span className="mt-0.5 block text-ink/65">
+                    <span className="mt-0.5 block text-ink/60">
                       {t('cookies.analyticsHelp')}
                     </span>
                   </span>
                 </label>
-                <label className="flex items-start gap-3 text-sm">
+                <label className="flex items-start gap-2.5 text-xs sm:text-[13px]">
                   <input
                     type="checkbox"
                     checked={marketing}
                     onChange={(e) => setMarketing(e.target.checked)}
-                    className="mt-1"
+                    className="mt-0.5"
                   />
                   <span>
                     <span className="font-semibold text-ink">
                       {t('cookies.marketing')}
                     </span>
-                    <span className="mt-0.5 block text-ink/65">
+                    <span className="mt-0.5 block text-ink/60">
                       {t('cookies.marketingHelp')}
                     </span>
                   </span>
@@ -115,10 +116,10 @@ export function CookieBanner({ ready: pageReady = true }: CookieBannerProps) {
               </div>
             ) : null}
 
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap gap-1.5">
               <button
                 type="button"
-                className="btn-primary"
+                className="inline-flex items-center justify-center rounded-lg bg-forest px-3 py-1.5 text-xs font-semibold text-ivory transition hover:bg-forest/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
                 onClick={() => {
                   acceptAll()
                   setOpen(false)
@@ -128,7 +129,7 @@ export function CookieBanner({ ready: pageReady = true }: CookieBannerProps) {
               </button>
               <button
                 type="button"
-                className="btn-secondary"
+                className="inline-flex items-center justify-center rounded-lg border border-ink/15 bg-ivory px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-forest/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
                 onClick={() => {
                   rejectOptional()
                   setOpen(false)
@@ -139,7 +140,7 @@ export function CookieBanner({ ready: pageReady = true }: CookieBannerProps) {
               {showDetails ? (
                 <button
                   type="button"
-                  className="btn-secondary"
+                  className="inline-flex items-center justify-center rounded-lg border border-ink/15 bg-ivory px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-forest/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
                   onClick={() => {
                     save({
                       analytics,
@@ -154,7 +155,7 @@ export function CookieBanner({ ready: pageReady = true }: CookieBannerProps) {
               ) : (
                 <button
                   type="button"
-                  className="btn-secondary"
+                  className="inline-flex items-center justify-center rounded-lg border border-ink/15 bg-ivory px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-forest/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
                   onClick={() => setShowDetails(true)}
                 >
                   {t('cookies.customize')}

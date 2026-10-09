@@ -40,19 +40,16 @@ export function ServicesSection() {
           <h2
             id="services-heading"
             data-reveal
-            className="mt-3 font-display text-3xl text-ink sm:text-4xl"
+            className="section-heading mt-3"
           >
             {t('sections.services')}
           </h2>
-          <p
-            data-reveal
-            className="mt-4 text-base leading-relaxed text-ink/80"
-          >
+          <p data-reveal className="section-lead mx-auto max-w-2xl">
             {t('services.intro')}
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2">
           {items.map((item) => (
             <TiltCard key={item.id} className="h-full">
               <article

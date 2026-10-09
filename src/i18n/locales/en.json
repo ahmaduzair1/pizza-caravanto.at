@@ -205,6 +205,14 @@
     "close": "Close",
     "prev": "Previous announcement",
     "next": "Next announcement",
+    "nextStep": "Next step",
     "gotIt": "Got it"
+  },
+  "placeholders": {
+    "name": "Enter your name",
+    "email": "Enter your email address",
+    "phone": "Enter your phone number",
+    "message": "Write your message here…",
+    "notes": "Any special requests?"
   }
 }

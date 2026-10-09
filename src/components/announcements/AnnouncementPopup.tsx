@@ -40,6 +40,11 @@ export function AnnouncementPopup({ ready = true }: AnnouncementPopupProps) {
     setOpen(false)
   }
 
+  const goNext = () => {
+    setIndex((i) => Math.min(items.length - 1, i + 1))
+  }
+
+  const isLast = index >= items.length - 1
   const current = items[index]
 
   return (
@@ -81,14 +86,25 @@ export function AnnouncementPopup({ ready = true }: AnnouncementPopupProps) {
             </div>
 
             <div className="space-y-4 px-6 py-5">
-              <p className="text-sm leading-relaxed text-ink/85">
-                {localize(current.body, i18n.language)}
-              </p>
-              {current.quote ? (
-                <blockquote className="border-l-4 border-forest pl-4 font-display text-base italic text-ink/85">
-                  {localize(current.quote, i18n.language)}
-                </blockquote>
-              ) : null}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -12 }}
+                  transition={{ duration: 0.22 }}
+                  className="space-y-4"
+                >
+                  <p className="text-sm leading-relaxed text-ink/85">
+                    {localize(current.body, i18n.language)}
+                  </p>
+                  {current.quote ? (
+                    <blockquote className="border-l-4 border-forest pl-4 font-display text-base italic text-ink/85">
+                      {localize(current.quote, i18n.language)}
+                    </blockquote>
+                  ) : null}
+                </motion.div>
+              </AnimatePresence>
 
               <div className="flex items-center justify-between gap-3 pt-2">
                 <div className="flex items-center gap-2">
@@ -104,8 +120,8 @@ export function AnnouncementPopup({ ready = true }: AnnouncementPopupProps) {
                   <button
                     type="button"
                     className="rounded-xl border border-ink/10 p-2 disabled:opacity-40"
-                    onClick={() => setIndex((i) => Math.min(items.length - 1, i + 1))}
-                    disabled={index >= items.length - 1}
+                    onClick={goNext}
+                    disabled={isLast}
                     aria-label={t('announcements.next')}
                   >
                     <ChevronRight size={18} />
@@ -114,9 +130,23 @@ export function AnnouncementPopup({ ready = true }: AnnouncementPopupProps) {
                     {index + 1} / {items.length}
                   </span>
                 </div>
-                <button type="button" className="btn-primary" onClick={dismiss}>
-                  {t('announcements.gotIt')}
-                </button>
+                {isLast ? (
+                  <button
+                    type="button"
+                    className="btn-primary"
+                    onClick={dismiss}
+                  >
+                    {t('announcements.gotIt')}
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn-primary"
+                    onClick={goNext}
+                  >
+                    {t('announcements.nextStep')}
+                  </button>
+                )}
               </div>
             </div>
           </motion.div>

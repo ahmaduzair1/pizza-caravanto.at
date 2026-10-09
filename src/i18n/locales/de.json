@@ -205,6 +205,14 @@
     "close": "Schließen",
     "prev": "Vorherige Mitteilung",
     "next": "Nächste Mitteilung",
+    "nextStep": "Nächster Schritt",
     "gotIt": "Verstanden"
+  },
+  "placeholders": {
+    "name": "Namen eingeben",
+    "email": "E-Mail-Adresse eingeben",
+    "phone": "Telefonnummer eingeben",
+    "message": "Nachricht hier schreiben…",
+    "notes": "Besondere Wünsche?"
   }
 }

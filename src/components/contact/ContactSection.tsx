@@ -22,7 +22,7 @@ export function ContactSection() {
       className="section-shell scroll-mt-24 bg-linen"
       aria-labelledby="kontakt-heading"
     >
-      <div className="container-page space-y-10">
+      <div className="container-page space-y-8">
         <div className="mx-auto max-w-3xl text-center">
           <p
             data-reveal
@@ -33,21 +33,18 @@ export function ContactSection() {
           <h2
             id="kontakt-heading"
             data-reveal
-            className="mt-3 font-display text-3xl text-ink sm:text-4xl"
+            className="section-heading mt-3"
           >
             {t('contact.title')}
           </h2>
-          <p
-            data-reveal
-            className="mt-4 text-base leading-relaxed text-ink/80"
-          >
+          <p data-reveal className="section-lead mx-auto max-w-2xl">
             {t('contact.intro')}
           </p>
         </div>
 
         <div
           data-reveal
-          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
         >
           <InfoCard
             icon={<Phone className="text-brass" size={22} aria-hidden />}
@@ -89,12 +86,12 @@ export function ContactSection() {
           </InfoCard>
         </div>
 
-        <div data-reveal className="grid gap-6 lg:grid-cols-2">
+        <div data-reveal className="grid gap-5 lg:grid-cols-2">
           <MapEmbed />
           <HoursCard />
         </div>
 
-        <div data-reveal className="grid gap-6 lg:grid-cols-2">
+        <div data-reveal className="grid gap-5 lg:grid-cols-2">
           <ReservationForm />
           <ContactForm />
         </div>

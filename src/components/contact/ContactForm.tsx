@@ -49,40 +49,44 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="space-y-4 rounded-2xl border border-ink/10 bg-ivory p-5 shadow-card sm:p-6"
+      className="form-card mx-auto w-full max-w-xl space-y-3.5 p-4 sm:p-5"
       noValidate
     >
-      <h3 className="font-display text-xl text-ink">
+      <h3 className="font-display text-lg text-ink sm:text-xl">
         {t('forms.contactTitle')}
       </h3>
 
-      <Field
-        label={t('forms.name')}
-        error={errors.name?.message}
-        id="contact-name"
-      >
-        <input
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        <Field
+          label={t('forms.name')}
+          error={errors.name?.message}
           id="contact-name"
-          type="text"
-          autoComplete="name"
-          className="field-input"
-          {...register('name')}
-        />
-      </Field>
+        >
+          <input
+            id="contact-name"
+            type="text"
+            autoComplete="name"
+            placeholder={t('placeholders.name')}
+            className="field-input"
+            {...register('name')}
+          />
+        </Field>
 
-      <Field
-        label={t('forms.email')}
-        error={errors.email?.message}
-        id="contact-email"
-      >
-        <input
+        <Field
+          label={t('forms.email')}
+          error={errors.email?.message}
           id="contact-email"
-          type="email"
-          autoComplete="email"
-          className="field-input"
-          {...register('email')}
-        />
-      </Field>
+        >
+          <input
+            id="contact-email"
+            type="email"
+            autoComplete="email"
+            placeholder={t('placeholders.email')}
+            className="field-input"
+            {...register('email')}
+          />
+        </Field>
+      </div>
 
       <Field
         label={t('forms.phoneOptional')}
@@ -93,6 +97,7 @@ export function ContactForm() {
           id="contact-phone"
           type="tel"
           autoComplete="tel"
+          placeholder={t('placeholders.phone')}
           className="field-input"
           {...register('phone')}
         />
@@ -106,14 +111,15 @@ export function ContactForm() {
         <textarea
           id="contact-message"
           rows={4}
-          className="field-input resize-y"
+          placeholder={t('placeholders.message')}
+          className="field-input"
           {...register('message')}
         />
       </Field>
 
       <button
         type="submit"
-        className="btn-primary w-full sm:w-auto"
+        className="btn-form w-full sm:w-auto"
         disabled={isSubmitting}
       >
         {isSubmitting ? t('forms.sending') : t('forms.sendMessage')}
@@ -125,7 +131,7 @@ export function ContactForm() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="flex items-start gap-2 rounded-2xl bg-forest/10 px-4 py-3 text-sm text-forest"
+            className="flex items-start gap-2 rounded-xl bg-forest/10 px-3.5 py-2.5 text-sm text-forest"
             role="status"
           >
             <CheckCircle2 className="mt-0.5 shrink-0" size={18} aria-hidden />
@@ -152,7 +158,7 @@ function Field({
   children: ReactNode
 }) {
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-1">
       <label htmlFor={id} className="text-sm font-semibold text-ink">
         {label}
       </label>

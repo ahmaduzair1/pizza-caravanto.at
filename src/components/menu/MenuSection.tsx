@@ -50,19 +50,19 @@ export function MenuSection() {
           <h2
             id="speisen-heading"
             data-reveal
-            className="mt-3 font-display text-3xl sm:text-4xl"
+            className="mt-3 font-display text-2xl leading-snug sm:text-3xl"
           >
             {t('menu.title')}
           </h2>
           <p
             data-reveal
-            className="mt-4 text-base leading-relaxed text-ivory/85"
+            className="mt-3 text-sm leading-relaxed text-ivory/85 sm:mt-4 sm:text-base"
           >
             {t('menu.intro')}
           </p>
           <div
             data-reveal
-            className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-brass/70 to-transparent"
+            className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-brass/70 to-transparent"
             aria-hidden
           />
         </div>
@@ -70,7 +70,7 @@ export function MenuSection() {
         <LayoutGroup>
           <div
             data-reveal
-            className="mt-10 flex flex-wrap justify-center gap-2"
+            className="mt-8 flex flex-wrap justify-center gap-2"
             role="tablist"
             aria-label={t('sections.menu')}
           >
@@ -105,7 +105,7 @@ export function MenuSection() {
           </div>
         </LayoutGroup>
 
-        <div className="mt-10 min-h-[12rem]">
+        <div className="mt-8 min-h-[12rem]">
           <AnimatePresence mode="popLayout">
             <motion.div
               key={active}
