@@ -8,6 +8,7 @@ import { ContactForm } from './ContactForm'
 import { HoursCard } from './HoursCard'
 import { MapEmbed } from './MapEmbed'
 import { ReservationForm } from './ReservationForm'
+import { ContactMotifs } from './ContactMotifs'
 
 export function ContactSection() {
   const { t } = useTranslation()
@@ -19,10 +20,20 @@ export function ContactSection() {
     <section
       id="kontakt"
       ref={sectionRef}
-      className="section-shell scroll-mt-24 bg-linen"
+      className="section-shell relative scroll-mt-24 overflow-hidden bg-linen"
       aria-labelledby="kontakt-heading"
     >
-      <div className="container-page flex flex-col gap-10">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-85"
+        aria-hidden
+        style={{
+          background:
+            'radial-gradient(ellipse 55% 40% at 18% 12%, color-mix(in oklch, var(--secondary) 50%, transparent), transparent 70%), radial-gradient(ellipse 50% 45% at 88% 78%, color-mix(in oklch, var(--primary) 12%, transparent), transparent 68%)',
+        }}
+      />
+      <ContactMotifs />
+
+      <div className="container-page relative flex flex-col gap-10">
         <div className="mx-auto max-w-3xl text-center">
           <p
             data-reveal

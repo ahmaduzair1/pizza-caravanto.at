@@ -6,6 +6,7 @@ import { fetchMenu } from '../../api/menu'
 import { useReveal } from '../../hooks/useReveal'
 import type { MenuCategory, MenuItem } from '../../types'
 import { MenuCard } from './MenuCard'
+import { MenuMotifs } from './MenuMotifs'
 
 export function MenuSection() {
   const { t } = useTranslation()
@@ -36,10 +37,20 @@ export function MenuSection() {
     <section
       id="speisen"
       ref={sectionRef}
-      className="on-dark section-shell scroll-mt-24 bg-forest"
+      className="on-dark section-shell relative scroll-mt-24 overflow-hidden bg-forest"
       aria-labelledby="speisen-heading"
     >
-      <div className="container-page">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-90"
+        aria-hidden
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 40% at 15% 20%, rgba(185,139,62,0.18), transparent 65%), radial-gradient(ellipse 45% 40% at 90% 80%, rgba(168,58,42,0.14), transparent 68%)',
+        }}
+      />
+      <MenuMotifs />
+
+      <div className="container-page relative">
         <div className="mx-auto max-w-3xl text-center">
           <p
             data-reveal
