@@ -169,16 +169,19 @@ export function Navbar() {
             </a>
           </div>
 
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-2xl border border-ivory/40 bg-ivory/10 p-2.5 text-ivory lg:hidden"
-            onClick={() => setMobileOpen((open) => !open)}
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-nav"
-            aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <LanguageSwitcher variant="overHero" />
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-2xl border border-ivory/40 bg-ivory/10 p-2.5 text-ivory"
+              onClick={() => setMobileOpen((open) => !open)}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav"
+              aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -211,7 +214,6 @@ export function Navbar() {
               </button>
             ))}
             <div className="mt-4 flex flex-col gap-3 border-t border-ivory/20 pt-6">
-              <LanguageSwitcher variant="overHero" />
               <a
                 href={siteConfig.orderUrl}
                 target="_blank"
