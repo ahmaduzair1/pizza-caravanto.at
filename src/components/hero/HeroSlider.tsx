@@ -16,6 +16,15 @@ export function HeroSlider() {
   const [index, setIndex] = useState(0)
   const [progressKey, setProgressKey] = useState(0)
 
+  const goTo = (next: number) => {
+    setIndex(next)
+    setProgressKey((key) => key + 1)
+  }
+
+  const goNext = () => {
+    goTo((index + 1) % heroSlides.length)
+  }
+
   useEffect(() => {
     if (reducedMotion) return
     const id = window.setInterval(() => {
@@ -24,11 +33,6 @@ export function HeroSlider() {
     }, SLIDE_MS)
     return () => window.clearInterval(id)
   }, [reducedMotion, index])
-
-  const goTo = (next: number) => {
-    setIndex(next)
-    setProgressKey((key) => key + 1)
-  }
 
   const slide = heroSlides[index]
 
@@ -40,7 +44,12 @@ export function HeroSlider() {
       aria-roledescription="carousel"
       aria-label={t('sections.hero')}
     >
-      <div className="absolute inset-0 bg-forest">
+      <button
+        type="button"
+        className="absolute inset-0 z-0 cursor-pointer border-0 bg-transparent p-0"
+        onClick={goNext}
+        aria-label={t('gallery.next')}
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}
@@ -50,15 +59,10 @@ export function HeroSlider() {
             exit={{ opacity: 0 }}
             transition={{ duration: reducedMotion ? 0.2 : 0.85 }}
           >
-            {/*
-              object-cover fills the hero edge-to-edge (no letterbox “zoomed out”).
-              Scale stays at 1 — no ken-burns — so it doesn’t look artificially zoomed in.
-              Swap these CDN URLs for the owner’s originals later for sharper quality.
-            */}
             <img
               src={slide.image}
               alt=""
-              className="h-full w-full object-cover object-center"
+              className="pointer-events-none h-full w-full object-cover object-center"
               draggable={false}
             />
 
@@ -78,17 +82,17 @@ export function HeroSlider() {
             />
           </motion.div>
         </AnimatePresence>
-      </div>
+      </button>
 
-      <div className="container-page relative z-10 flex min-h-[100svh] flex-col justify-end pb-20 pt-24 sm:justify-center sm:pb-16 sm:pt-28 lg:pb-20">
-        <div className="mb-4 sm:mb-5">
+      <div className="pointer-events-none container-page relative z-10 flex min-h-[100svh] flex-col justify-end pb-20 pt-24 sm:justify-center sm:pb-16 sm:pt-28 lg:pb-20">
+        <div className="pointer-events-auto mb-4 sm:mb-5">
           <OpenClosedBadge />
         </div>
 
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id + '-copy'}
-            className="max-w-xl lg:max-w-2xl"
+            className="pointer-events-auto max-w-xl lg:max-w-2xl"
             initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
@@ -162,7 +166,7 @@ export function HeroSlider() {
         </AnimatePresence>
 
         <div
-          className="mt-8 flex items-center gap-2.5 sm:mt-10 sm:gap-3"
+          className="pointer-events-auto mt-8 flex items-center gap-2.5 sm:mt-10 sm:gap-3"
           role="tablist"
           aria-label="Hero slides"
         >

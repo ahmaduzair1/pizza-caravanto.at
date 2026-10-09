@@ -22,7 +22,6 @@ export function Navbar() {
   const { t } = useTranslation()
   const location = useLocation()
   const isHome = location.pathname === '/'
-  /** Orbit hero is light — solid forest nav even at top */
   const lightHero = isHome && HERO_VARIANT === 'orbit'
   const [scrolled, setScrolled] = useState(!isHome || lightHero)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -79,8 +78,10 @@ export function Navbar() {
   }, [mobileOpen])
 
   const solid = scrolled || mobileOpen
+  /** Light cream menu panel (theme) vs dark glass bar over hero */
+  const lightPanel = mobileOpen
 
-  const linkClass = (id: string) => {
+  const desktopLinkClass = (id: string) => {
     const active = isHome && activeId === id
     return `border-b-2 px-3 py-2 text-sm font-medium transition-colors ${
       active
@@ -92,19 +93,27 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`on-dark fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          solid
-            ? 'border-b border-brass/40 py-2 shadow-soft'
-            : 'border-b border-transparent bg-transparent py-4'
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          lightPanel
+            ? 'border-b border-border py-2 shadow-soft'
+            : solid
+              ? 'on-dark border-b border-brass/30 py-2 shadow-soft'
+              : 'on-dark border-b border-transparent bg-transparent py-4'
         }`}
         style={
-          solid
+          lightPanel
             ? {
-                backgroundColor: 'var(--color-forest)',
-                // Fully opaque when open — no backdrop blur bleed-through on mobile
-                backdropFilter: 'none',
+                backgroundColor: 'color-mix(in oklch, var(--background) 92%, white)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
               }
-            : undefined
+            : solid
+              ? {
+                  backgroundColor: 'color-mix(in oklch, var(--color-forest) 88%, transparent)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                }
+              : undefined
         }
       >
         <div className="container-page flex items-center justify-between gap-4">
@@ -114,13 +123,17 @@ export function Navbar() {
             aria-label={t('common.brand')}
           >
             <img
-              src={images.logo}
+              src={lightPanel ? images.logoDark : images.logo}
               alt={t('common.brand')}
-              className={`w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] transition-all duration-300 ${
+              className={`w-auto transition-all duration-300 ${
                 solid ? 'h-10' : 'h-12'
-              }`}
+              } ${lightPanel ? '' : 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]'}`}
               width={160}
               height={48}
+              onError={(e) => {
+                // Fallback if dark logo missing
+                e.currentTarget.src = images.logo
+              }}
             />
           </Link>
 
@@ -129,7 +142,7 @@ export function Navbar() {
               <Link
                 key={link.hash}
                 to={`/${link.hash}`}
-                className={linkClass(link.id)}
+                className={desktopLinkClass(link.id)}
                 aria-current={activeId === link.id && isHome ? 'true' : undefined}
               >
                 {t(link.labelKey)}
@@ -151,7 +164,11 @@ export function Navbar() {
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-2xl border border-ivory/40 bg-ivory/10 p-2.5 text-ivory lg:hidden"
+            className={`inline-flex items-center justify-center rounded-2xl border p-2.5 lg:hidden ${
+              lightPanel
+                ? 'border-border bg-card text-foreground'
+                : 'border-ivory/40 bg-ivory/10 text-ivory'
+            }`}
             onClick={() => setMobileOpen((open) => !open)}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
@@ -165,8 +182,12 @@ export function Navbar() {
       {mobileOpen ? (
         <div
           id="mobile-nav"
-          className="on-dark fixed inset-0 z-[49] flex flex-col lg:hidden"
-          style={{ backgroundColor: 'var(--color-forest)' }}
+          className="fixed inset-0 z-[49] flex flex-col lg:hidden"
+          style={{
+            backgroundColor: 'color-mix(in oklch, var(--background) 94%, white)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+          }}
           role="dialog"
           aria-modal="true"
           aria-label={t('nav.openMenu')}
@@ -175,29 +196,28 @@ export function Navbar() {
           <nav
             className="container-page flex flex-1 flex-col gap-1 overflow-y-auto pb-28 pt-4"
             aria-label="Mobile"
-            style={{ backgroundColor: 'var(--color-forest)' }}
           >
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.hash}
                 to={`/${link.hash}`}
-                className={`rounded-xl border-b px-4 py-3.5 text-lg font-medium ${
+                className={`rounded-xl px-4 py-3.5 text-lg font-medium transition-colors ${
                   activeId === link.id
-                    ? 'border-brass bg-ivory/10 text-ivory'
-                    : 'border-transparent text-ivory/90 hover:bg-ivory/5 hover:text-ivory'
+                    ? 'bg-primary-soft text-foreground ring-primary-soft'
+                    : 'text-foreground/80 hover:bg-muted hover:text-foreground'
                 }`}
                 onClick={() => setMobileOpen(false)}
               >
                 {t(link.labelKey)}
               </Link>
             ))}
-            <div className="mt-4 flex flex-col gap-3 border-t border-brass/25 pt-6">
-              <LanguageSwitcher variant="overHero" />
+            <div className="mt-4 flex flex-col gap-3 border-t border-border pt-6">
+              <LanguageSwitcher variant="light" />
               <a
                 href={siteConfig.orderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary w-full"
+                className="btn-form w-full"
               >
                 {t('nav.orderCta')}
               </a>
