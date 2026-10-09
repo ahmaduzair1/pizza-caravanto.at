@@ -22,7 +22,7 @@ export function ContactSection() {
       className="section-shell scroll-mt-24 bg-linen"
       aria-labelledby="kontakt-heading"
     >
-      <div className="container-page flex flex-col gap-8 sm:gap-10">
+      <div className="container-page flex flex-col gap-10">
         <div className="mx-auto max-w-3xl text-center">
           <p
             data-reveal

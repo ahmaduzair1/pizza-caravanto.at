@@ -26,39 +26,35 @@ export function DiscoverSection() {
   return (
     <section
       id="entdecken"
-      className="scroll-mt-24 bg-linen"
+      className="section-shell scroll-mt-24 bg-linen"
       aria-labelledby="entdecken-heading"
     >
-      <div className="section-shell-top">
-        <div ref={introRef} className="container-page max-w-3xl">
-          <p
-            data-reveal
-            className="text-xs font-semibold uppercase tracking-[0.22em] text-forest"
-          >
-            {t('sections.discover')}
-          </p>
-          <h2
-            id="entdecken-heading"
-            data-reveal
-            className="section-heading mt-3"
-          >
-            {t('discover.title')}
-          </h2>
-          <p data-reveal className="section-lead">
-            {t('discover.body')}
-          </p>
-        </div>
+      <div ref={introRef} className="container-page max-w-3xl">
+        <p
+          data-reveal
+          className="text-xs font-semibold uppercase tracking-[0.22em] text-forest"
+        >
+          {t('sections.discover')}
+        </p>
+        <h2
+          id="entdecken-heading"
+          data-reveal
+          className="section-heading mt-3"
+        >
+          {t('discover.title')}
+        </h2>
+        <p data-reveal className="section-lead">
+          {t('discover.body')}
+        </p>
       </div>
 
       <div className="section-gap">
         <HorizontalGallery images={images} onOpen={setLightboxIndex} />
       </div>
 
-      <div className="section-shell-bottom section-gap">
-        <p className="container-page mx-auto max-w-3xl text-center font-display text-sm italic text-ink/75 sm:text-base">
-          {t('discover.caption')}
-        </p>
-      </div>
+      <p className="section-gap container-page mx-auto max-w-3xl text-center font-display text-sm italic text-ink/75 sm:text-base">
+        {t('discover.caption')}
+      </p>
 
       <Lightbox
         images={images}

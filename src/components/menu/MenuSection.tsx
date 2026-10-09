@@ -105,7 +105,7 @@ export function MenuSection() {
           </div>
         </LayoutGroup>
 
-        <div className="section-gap min-h-[12rem]">
+        <div className="mt-6 min-h-[12rem]">
           <AnimatePresence mode="popLayout">
             <motion.div
               key={active}

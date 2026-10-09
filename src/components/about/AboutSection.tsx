@@ -28,7 +28,7 @@ export function AboutSection() {
       className="section-shell scroll-mt-24 bg-background"
       aria-labelledby="ueber-uns-heading"
     >
-      <div className="container-page grid items-start gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-10">
+      <div className="container-page grid items-start gap-10 lg:grid-cols-12">
         <div className="space-y-4 lg:col-span-6 xl:col-span-7">
           <p
             data-reveal

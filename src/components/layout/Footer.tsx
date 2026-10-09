@@ -36,7 +36,7 @@ export function Footer() {
 
   return (
     <footer className="on-dark border-t border-brass/20 bg-forest">
-      <div className="container-page grid gap-10 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <div className="container-page grid gap-10 py-16 sm:py-20 lg:py-24 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         <div className="space-y-4">
           <img
             src={images.logo}
