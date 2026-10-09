@@ -6,6 +6,7 @@ import { useReveal } from '../../hooks/useReveal'
 import type { ServiceCard } from '../../types'
 import { localize } from '../../utils/localize'
 import { TiltCard } from '../ui/TiltCard'
+import { ServiceMotifs } from './ServiceMotifs'
 
 export function ServicesSection() {
   const { t, i18n } = useTranslation()
@@ -26,10 +27,21 @@ export function ServicesSection() {
     <section
       id="services"
       ref={sectionRef}
-      className="section-shell scroll-mt-24 bg-background"
+      className="section-shell relative scroll-mt-24 overflow-hidden bg-background"
       aria-labelledby="services-heading"
     >
-      <div className="container-page">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-80"
+        aria-hidden
+        style={{
+          background:
+            'radial-gradient(ellipse 55% 40% at 20% 15%, color-mix(in oklch, var(--accent) 55%, transparent), transparent 70%), radial-gradient(ellipse 50% 45% at 85% 75%, color-mix(in oklch, var(--secondary) 45%, transparent), transparent 68%)',
+        }}
+      />
+
+      <ServiceMotifs />
+
+      <div className="container-page relative">
         <div className="mx-auto max-w-3xl text-center">
           <p
             data-reveal
