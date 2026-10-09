@@ -90,85 +90,101 @@ export function Navbar() {
   }
 
   return (
-    <header
-      className={`on-dark fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        solid
-          ? 'border-b border-brass/40 bg-forest/[0.92] py-2 shadow-soft backdrop-blur-md'
-          : 'border-b border-transparent bg-transparent py-4'
-      }`}
-    >
-      <div className="container-page flex items-center justify-between gap-4">
-        <Link
-          to="/"
-          className="flex shrink-0 items-center gap-3"
-          aria-label={t('common.brand')}
-        >
-          <img
-            src={images.logo}
-            alt={t('common.brand')}
-            className={`w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] transition-all duration-300 ${
-              solid ? 'h-10' : 'h-12'
-            }`}
-            width={160}
-            height={48}
-          />
-        </Link>
-
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.hash}
-              to={`/${link.hash}`}
-              className={linkClass(link.id)}
-              aria-current={activeId === link.id && isHome ? 'true' : undefined}
-            >
-              {t(link.labelKey)}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="hidden items-center gap-3 lg:flex">
-          <LanguageSwitcher variant="overHero" />
-          <a
-            href={siteConfig.orderUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
+    <>
+      <header
+        className={`on-dark fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          solid
+            ? 'border-b border-brass/40 py-2 shadow-soft'
+            : 'border-b border-transparent bg-transparent py-4'
+        }`}
+        style={
+          solid
+            ? {
+                backgroundColor: 'var(--color-forest)',
+                // Fully opaque when open — no backdrop blur bleed-through on mobile
+                backdropFilter: 'none',
+              }
+            : undefined
+        }
+      >
+        <div className="container-page flex items-center justify-between gap-4">
+          <Link
+            to="/"
+            className="flex shrink-0 items-center gap-3"
+            aria-label={t('common.brand')}
           >
-            {t('nav.orderCta')}
-          </a>
-        </div>
+            <img
+              src={images.logo}
+              alt={t('common.brand')}
+              className={`w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] transition-all duration-300 ${
+                solid ? 'h-10' : 'h-12'
+              }`}
+              width={160}
+              height={48}
+            />
+          </Link>
 
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-2xl border border-ivory/40 bg-ivory/10 p-2.5 text-ivory lg:hidden"
-          onClick={() => setMobileOpen((open) => !open)}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-nav"
-          aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.hash}
+                to={`/${link.hash}`}
+                className={linkClass(link.id)}
+                aria-current={activeId === link.id && isHome ? 'true' : undefined}
+              >
+                {t(link.labelKey)}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-3 lg:flex">
+            <LanguageSwitcher variant="overHero" />
+            <a
+              href={siteConfig.orderUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              {t('nav.orderCta')}
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-2xl border border-ivory/40 bg-ivory/10 p-2.5 text-ivory lg:hidden"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+            aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </header>
 
       {mobileOpen ? (
         <div
           id="mobile-nav"
-          className="on-dark fixed inset-x-0 bottom-0 z-40 flex flex-col border-t border-brass/30 bg-forest lg:hidden"
-          style={{ top: solid ? '3.75rem' : '4.5rem' }}
+          className="on-dark fixed inset-0 z-[49] flex flex-col lg:hidden"
+          style={{ backgroundColor: 'var(--color-forest)' }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t('nav.openMenu')}
         >
+          <div className="h-[3.75rem] shrink-0" aria-hidden />
           <nav
-            className="container-page flex flex-1 flex-col gap-2 py-8"
+            className="container-page flex flex-1 flex-col gap-1 overflow-y-auto pb-28 pt-4"
             aria-label="Mobile"
+            style={{ backgroundColor: 'var(--color-forest)' }}
           >
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.hash}
                 to={`/${link.hash}`}
-                className={`border-b px-4 py-3 text-lg font-medium ${
+                className={`rounded-xl border-b px-4 py-3.5 text-lg font-medium ${
                   activeId === link.id
-                    ? 'border-brass text-ivory'
-                    : 'border-transparent text-ivory/90 hover:text-ivory'
+                    ? 'border-brass bg-ivory/10 text-ivory'
+                    : 'border-transparent text-ivory/90 hover:bg-ivory/5 hover:text-ivory'
                 }`}
                 onClick={() => setMobileOpen(false)}
               >
@@ -189,6 +205,6 @@ export function Navbar() {
           </nav>
         </div>
       ) : null}
-    </header>
+    </>
   )
 }

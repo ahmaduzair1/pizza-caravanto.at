@@ -46,22 +46,28 @@ function HoursList({
 
   return (
     <div>
-      <h3 className="font-display text-lg text-ink">{title}</h3>
-      <ul className="mt-3 space-y-1.5 text-sm">
+      <h3 className="font-display text-base text-foreground sm:text-lg">
+        {title}
+      </h3>
+      <ul className="mt-2.5 space-y-1 text-sm">
         {ordered.map((entry) => {
           const isToday = entry.day === today
           return (
             <li
               key={entry.day}
-              className={`flex items-center justify-between gap-3 rounded-xl px-3 py-2 ${
-                isToday ? 'bg-forest/10 font-semibold text-ink' : 'text-ink/75'
+              className={`flex items-center justify-between gap-3 rounded-[calc(var(--radius)-4px)] px-3 py-2 transition-colors ${
+                isToday
+                  ? 'bg-primary-soft ring-primary-soft font-semibold text-foreground'
+                  : 'text-muted-foreground'
               }`}
             >
               <span>
                 {dayLabel(entry.day)}
                 {isToday ? ' ·' : ''}
               </span>
-              <span>{formatDayRow(entry, closedLabel)}</span>
+              <span className={isToday ? 'text-primary' : undefined}>
+                {formatDayRow(entry, closedLabel)}
+              </span>
             </li>
           )
         })}
@@ -88,13 +94,15 @@ export function HoursCard() {
   const dayLabel = (day: DayOfWeek) => t(`days.${day}`)
 
   return (
-    <div className="rounded-2xl border border-ink/10 bg-ivory p-5 shadow-card sm:p-6">
+    <div className="form-card p-4 sm:p-5">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <h3 className="font-display text-xl text-ink">{t('contact.hours')}</h3>
-        <OpenClosedBadge />
+        <h3 className="font-display text-lg text-foreground sm:text-xl">
+          {t('contact.hours')}
+        </h3>
+        <OpenClosedBadge tone="light" />
       </div>
       {schedule ? (
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
           <HoursList
             title={t('contact.hours')}
             days={schedule.openingHours}
@@ -111,7 +119,7 @@ export function HoursCard() {
           />
         </div>
       ) : (
-        <p className="text-sm text-ink/60">{t('common.loading')}</p>
+        <p className="text-sm text-muted-foreground">{t('common.loading')}</p>
       )}
     </div>
   )
