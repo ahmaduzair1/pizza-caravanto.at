@@ -2,9 +2,10 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
-import { registerLenis } from '../../lib/lenisController'
+import { registerLenis, scrollToSection } from '../../lib/lenisController'
 import { emitScroll } from '../../lib/scrollBus'
 
 import 'lenis/dist/lenis.css'
@@ -13,6 +14,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 export function SmoothScroll() {
   const reducedMotion = usePrefersReducedMotion()
+  const location = useLocation()
+
+  useEffect(() => {
+    const hash = location.hash.replace(/^#/, '')
+    if (!hash) return
+    const timer = window.setTimeout(() => scrollToSection(hash), 50)
+    return () => window.clearTimeout(timer)
+  }, [location.hash, location.pathname])
 
   useEffect(() => {
     if (reducedMotion) {
